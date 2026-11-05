@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CardPedido from "../components/CardPedido";
 
 const Pedidos = () => {
   const [category, setCategory] = useState("Pendente");
-  const [products, setProducts] = useState([]);
 
   const handleCategory = (newCategory: string) => {
     setCategory(newCategory);

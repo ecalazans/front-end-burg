@@ -78,6 +78,7 @@ const Home = () => {
             price={product.price}
             category={product.category}
             key={product.id}
+            setProducts={setProducts}
           />
         ))}
         {filteredProduct.length === 0 && (

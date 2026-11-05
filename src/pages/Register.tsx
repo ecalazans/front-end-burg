@@ -53,8 +53,8 @@ const Register = () => {
           setError("");
       }
 
-      const data = await response.json();
-      console.log(data);
+      // const data = await response.json();
+      // console.log(data);
     } catch (error) {
       console.log(error);
       return;
