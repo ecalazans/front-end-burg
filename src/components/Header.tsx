@@ -3,10 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { LogOut, ShoppingCart, Box, LayoutDashboard, Plus } from "lucide-react";
 import Cart from "./Cart";
+import { CartItemsContext } from "../context/CartItemsContext";
 
 const Header = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
   const { user, setUser } = useContext(UserContext);
+  const { cartItems } = useContext(CartItemsContext);
   const location = useLocation();
 
   const handleAuthUser = async () => {
@@ -101,7 +103,7 @@ const Header = () => {
                 onClick={() => setShowCart(!showCart)}
               />
               <p className="absolute -top-4 -right-4 flex h-5 w-5 items-center justify-center rounded-xl bg-[#F2DAAC] text-[#161410]">
-                1
+                {cartItems.length}
               </p>
             </div>
 
