@@ -50,6 +50,12 @@ const Header = () => {
     }
   };
 
+  let cartQuantity = 0;
+
+  for (let i = 0; i < cartItems.length; i++) {
+    cartQuantity += cartItems[i].quantity;
+  }
+
   useEffect(() => {
     handleAuthUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,7 +109,7 @@ const Header = () => {
                 onClick={() => setShowCart(!showCart)}
               />
               <p className="absolute -top-4 -right-4 flex h-5 w-5 items-center justify-center rounded-xl bg-[#F2DAAC] text-[#161410]">
-                {cartItems.length}
+                {cartQuantity}
               </p>
             </div>
 

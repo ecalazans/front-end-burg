@@ -29,6 +29,22 @@ const Product = ({
     }
   };
 
+  const newCartItem = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/create-cart-item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ productId: id }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleDeleteProduct = async (id: string) => {
     try {
       if (!id) {
@@ -83,7 +99,7 @@ const Product = ({
             <ShoppingCart
               size={18}
               className="cursor-pointer"
-              onClick={() => alert(id)}
+              onClick={() => newCartItem()}
             />
           </div>
         </div>

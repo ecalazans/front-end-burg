@@ -52,6 +52,7 @@ const Cart = ({ setShowCart, showCart }: CartTypeProps) => {
             price={item.product.price}
             img={item.product.img}
             id={item.product.id}
+            quantity={item.quantity}
           />
         ))}
       </div>
