@@ -1,5 +1,5 @@
 import { ShoppingCart } from "lucide-react";
-import { type ProductType } from "../types/Product";
+import { type ProductProps } from "../types/Product";
 import { formatterPrice } from "../utils/formatterPrice";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
@@ -12,7 +12,7 @@ const Product = ({
   price,
   category,
   setProducts,
-}: ProductType) => {
+}: ProductProps) => {
   const { user } = useContext(UserContext);
 
   const getProducts = async () => {
@@ -80,7 +80,11 @@ const Product = ({
           </p>
           <div className="flex items-center justify-end gap-2">
             <p className="text-sm text-[#F2DAAC]">{formatterPrice(price)}</p>
-            <ShoppingCart size={18} className="cursor-pointer" />
+            <ShoppingCart
+              size={18}
+              className="cursor-pointer"
+              onClick={() => alert(id)}
+            />
           </div>
         </div>
       </div>
