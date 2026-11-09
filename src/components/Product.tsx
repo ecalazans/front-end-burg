@@ -3,6 +3,7 @@ import { type ProductProps } from "../types/Product";
 import { formatterPrice } from "../utils/formatterPrice";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import { CartItemsContext } from "../context/CartItemsContext";
 
 const Product = ({
   id,
@@ -14,6 +15,7 @@ const Product = ({
   setProducts,
 }: ProductProps) => {
   const { user } = useContext(UserContext);
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
 
   const getProducts = async () => {
     try {
@@ -29,6 +31,26 @@ const Product = ({
     }
   };
 
+  const getCartItems = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/get-cart-items", {
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        console.log("Erro ao realizar a requisição");
+        return;
+      }
+
+      const data = await response.json();
+      setCartItems(data);
+      return;
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   const newCartItem = async () => {
     try {
       const response = await fetch("http://localhost:3000/create-cart-item", {
@@ -38,8 +60,11 @@ const Product = ({
         body: JSON.stringify({ productId: id }),
       });
 
-      const data = await response.json();
-      console.log(data);
+      if (!response.ok) {
+        console.log("deu ruim");
+        return;
+      }
+      getCartItems();
     } catch (error) {
       console.log(error);
     }

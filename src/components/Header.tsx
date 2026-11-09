@@ -8,7 +8,7 @@ import { CartItemsContext } from "../context/CartItemsContext";
 const Header = () => {
   const [showCart, setShowCart] = useState<boolean>(false);
   const { user, setUser } = useContext(UserContext);
-  const { cartItems } = useContext(CartItemsContext);
+  const { cartItems, setCartItems } = useContext(CartItemsContext);
   const location = useLocation();
 
   const handleAuthUser = async () => {
@@ -56,8 +56,29 @@ const Header = () => {
     cartQuantity += cartItems[i].quantity;
   }
 
+  const getCartItems = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/get-cart-items", {
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        console.log("Erro ao realizar a requisição");
+        return;
+      }
+
+      const data = await response.json();
+      setCartItems(data);
+      return;
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   useEffect(() => {
     handleAuthUser();
+    getCartItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
