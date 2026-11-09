@@ -1,73 +1,167 @@
-# React + TypeScript + Vite
+# 🍔 Casa do Hambúrguer — Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+  <img src="./public/logo.png" alt="Casa do Hambúrguer" width="120" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+  <h3>Casa do Hambúrguer</h3>
 
-## React Compiler
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📌 Sobre o projeto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Aplicação web desenvolvida para uma hamburgueria, com funcionalidades de autenticação de usuários, visualização de produtos e gerenciamento de carrinho de compras.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O projeto foi desenvolvido utilizando **React, TypeScript e Tailwind CSS**, consumindo uma API REST desenvolvida com Node.js, Express, Prisma ORM e PostgreSQL.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+O desenvolvimento tem como objetivo aplicar conceitos de desenvolvimento front-end, componentização, gerenciamento de estados, navegação entre páginas e integração com uma API.
+
+## 🛠️ Tecnologias
+
+<div align="center">
+
+  <img src="https://skillicons.dev/icons?i=react,typescript,vite,tailwind,nodejs&theme=dark" />
+
+</div>
+
+- **React:** desenvolvimento de interfaces utilizando componentes.
+- **TypeScript:** tipagem estática e organização do código.
+- **Vite:** ferramenta de desenvolvimento e build.
+- **Tailwind CSS:** estilização da aplicação.
+- **React Router:** gerenciamento de rotas.
+- **Lucide React:** biblioteca de ícones.
+
+## 📋 Funcionalidades
+
+### 👤 Usuários e autenticação
+
+- Cadastro de usuários.
+- Login com e-mail e senha.
+- Autenticação integrada com o backend.
+- Gerenciamento de informações do usuário.
+- Proteção de rotas.
+
+### 🍔 Produtos
+
+- Exibição do catálogo de produtos.
+- Visualização das informações dos produtos.
+- Integração com a API para obtenção dos dados.
+
+### 🛒 Carrinho de compras
+
+- Adição de produtos ao carrinho.
+- Gerenciamento dos itens selecionados.
+- Controle de quantidade dos produtos.
+- Integração com o backend para persistência dos itens.
+
+## 🔗 Integração com o backend
+
+O front-end se comunica com uma API REST desenvolvida utilizando:
+
+<div align="center">
+
+  <img src="https://skillicons.dev/icons?i=nodejs,express,typescript,postgres,prisma&theme=dark" />
+
+</div>
+
+A integração permite realizar operações relacionadas à autenticação de usuários, consulta de produtos e gerenciamento do carrinho de compras.
+
+Atualmente, o front-end e o backend estão funcionando e se comunicando localmente.
+
+## 📂 Estrutura do projeto
+
+```text
+front-end-burg/
+│
+├── public/
+│   ├── logo.png
+│   └── imagens/
+│
+├── src/
+│   ├── components/
+│   │   ├── Button.tsx
+│   │   ├── Header.tsx
+│   │   ├── Input.tsx
+│   │   ├── Product.tsx
+│   │   ├── Cart.tsx
+│   │   └── CartItem.tsx
+│   │
+│   ├── context/
+│   │   ├── CartItemsContext.tsx
+│   │   └── UserContext.tsx
+│   │
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── Login.tsx
+│   │   ├── Register.tsx
+│   │   ├── Cardapio.tsx
+│   │   └── Pedidos.tsx
+│   │
+│   ├── types/
+│   │   ├── CartItem.tsx
+│   │   ├── Product.ts
+│   │   └── User.ts
+│   │
+│   ├── router.tsx
+│   ├── main.tsx
+│   └── index.css
+│
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Como executar o projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Pré-requisitos
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js
+- npm
+- Backend do Casa do Hambúrguer configurado e executando localmente.
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/ecalazans/front-end-burg.git
 ```
+
+### 2. Acesse a pasta do projeto
+
+```bash
+cd front-end-burg
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Execute a aplicação
+
+```bash
+npm run dev
+```
+
+O Vite disponibilizará o endereço local da aplicação no terminal.
+
+> Para utilizar as funcionalidades que dependem da API, o backend também precisa estar em execução e corretamente configurado no front-end.
+
+## 🚀 Próximos passos
+
+- Hospedagem do front-end.
+- Hospedagem do backend.
+- Configuração da comunicação entre os ambientes de produção.
+
+## 👨‍💻 Desenvolvedor
+
+**Erick Calazans**
+
+Projeto desenvolvido para praticar e aprimorar conhecimentos em desenvolvimento web, utilizando React, TypeScript e integração com API REST.
