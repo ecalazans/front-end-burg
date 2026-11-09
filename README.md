@@ -6,8 +6,6 @@
 
 </div>
 
----
-
 ## 📌 Sobre o projeto
 
 Aplicação web desenvolvida para uma hamburgueria, com funcionalidades de autenticação de usuários, visualização de produtos e gerenciamento de carrinho de compras.
